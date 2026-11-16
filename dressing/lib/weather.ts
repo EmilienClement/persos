@@ -40,3 +40,22 @@ export async function getWeather(lat: number, lon: number): Promise<Weather> {
     },
   };
 }
+
+export type DayForecast = { date: string; feelsMin: number; feelsMax: number; rain: number };
+
+/** Prévisions jour par jour (Open-Meteo ne prévoit qu'à 16 jours). */
+export async function getForecastRange(lat: number, lon: number, start: string, end: string): Promise<DayForecast[]> {
+  const url =
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+    `&daily=apparent_temperature_min,apparent_temperature_max,precipitation_probability_max` +
+    `&start_date=${start}&end_date=${end}&timezone=auto`;
+  const res = await fetch(url, { next: { revalidate: 3600 } });
+  if (!res.ok) throw new Error(`Open-Meteo ${res.status}`);
+  const d = await res.json();
+  return (d.daily.time as string[]).map((date, i) => ({
+    date,
+    feelsMin: Math.round(d.daily.apparent_temperature_min[i]),
+    feelsMax: Math.round(d.daily.apparent_temperature_max[i]),
+    rain: Math.round(d.daily.precipitation_probability_max[i] ?? 0),
+  }));
+}

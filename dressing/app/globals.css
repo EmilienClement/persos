@@ -74,3 +74,14 @@ a { color: var(--accent); }
 .rules li { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid var(--line); }
 .inline select { padding:12px; font-size:16px; border:1px solid var(--line); background:#fbf9f4; border-radius:0; }
 .links { display:flex; gap:14px; flex-wrap:wrap; margin:8px 0; } .links a { font-size:14px; }
+.bars { list-style:none; padding:0; margin:8px 0 16px; }
+.bars li { display:grid; grid-template-columns: 110px 1fr 40px; gap:10px; align-items:center; padding:4px 0; font-size:13px; }
+.bars .lab { display:flex; align-items:center; gap:6px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bars .lab i { width:12px; height:12px; border:1px solid var(--line); flex:none; }
+.bars .bar { height:8px; background:#e6dfd0; } .bars .bar b { display:block; height:100%; background:var(--ink); }
+.bars .val { text-align:right; color:var(--mute); }
+.wish { list-style:none; padding:0; margin:20px 0; }
+.wish li { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+.wish li.done { opacity:.5; }
+.wish img { width:64px; height:80px; object-fit:cover; background:#ebe5d8; flex:none; }
+.wish div { display:flex; flex-direction:column; gap:2px; min-width:0; }
