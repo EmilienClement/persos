@@ -30,7 +30,7 @@ export async function resizeJpeg(file: Blob, max: number) {
 }
 
 /** Pose l'image (éventuellement transparente) sur un fond neutre, puis exporte en WebP. */
-export async function composeWebp(src: Blob, max: number, quality: number, bg = "#f4f0e8") {
+export async function composeWebp(src: Blob, max: number, quality: number, bg = "#e6dbcf") {
   const bmp = await toBitmap(src);
   const { w, h } = fitSize(bmp.width, bmp.height, max);
   const c = canvasOf(w, h);

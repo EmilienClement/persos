@@ -53,7 +53,8 @@ export default function Dressing() {
         {shown.map((i) => (
           <Link key={i.id} href={`/dressing/${i.id}`} className="tile">
             {urls[i.thumb_path ?? ""] ? <img src={urls[i.thumb_path!]} alt={i.name} loading="lazy" /> : <div className="ph" />}
-            <span>{i.name}</span>
+            <strong>{i.name}</strong>
+            <small>{[i.brand, i.wear_count ? `${i.wear_count} port${i.wear_count > 1 ? "s" : ""}` : "jamais portée"].filter(Boolean).join(" · ")}</small>
           </Link>
         ))}
       </div>

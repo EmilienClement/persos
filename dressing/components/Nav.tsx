@@ -31,7 +31,7 @@ export default function Nav() {
     <nav className="nav" aria-label="Navigation principale">
       {TABS.map((t) => (
         <Link key={t.href} href={t.href} aria-current={isOn(t.href) ? "page" : undefined} className={isOn(t.href) ? "on" : ""}>
-          {t.icon}
+          <i className="ic">{t.icon}</i>
           <span>{t.label}</span>
         </Link>
       ))}

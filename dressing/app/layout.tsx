@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
+
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const serif = Playfair_Display({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Dressing",
@@ -11,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1c1b19",
+  themeColor: "#efe7df",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -19,7 +23,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <RegisterSW />
         {children}
