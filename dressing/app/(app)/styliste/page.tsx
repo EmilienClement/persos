@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useSignedUrls } from "@/lib/useSigned";
 import { useLocation } from "@/lib/useLocation";
 import { OCCASIONS } from "@/lib/occasions";
+import { shuffleOutfit } from "@/lib/shuffle";
 
 type OItem = { id: string; name: string; category: string; thumb_path: string | null };
 type Outfit = { id: string; title: string; accords: string; weather_note: string | null; formality: number; items: OItem[] };
@@ -64,6 +65,12 @@ export default function Styliste() {
       </div>
 
       <button className="btn" onClick={go} disabled={busy}>{busy ? "Je réfléchis…" : "Proposer 3 tenues"}</button>
+      <button className="btn ghost" onClick={async () => {
+        setBusy(true); setErr(""); setRes(null);
+        const o = await shuffleOutfit(supabase, true);
+        if (o) setRes({ outfits: [o], manque: [], message: null }); else setErr("Pas assez de pièces disponibles (haut, bas, chaussures).");
+        setBusy(false);
+      }}>Au hasard (sans IA)</button>
       {err && <p role="alert" className="warn">{err}</p>}
       {res?.message && <p className="muted">{res.message}</p>}
 
@@ -87,6 +94,7 @@ function OutfitCard({ o, urls }: { o: Outfit; urls: Record<string, string> }) {
   const [reason, setReason] = useState("");
   const [worn, setWorn] = useState(false);
   const [note, setNote] = useState("");
+  const [plan, setPlan] = useState("");
 
   async function send(rating: 1 | -1, why?: string) {
     setVote(rating); setAsking(null);
@@ -127,6 +135,15 @@ function OutfitCard({ o, urls }: { o: Outfit; urls: Record<string, string> }) {
           <button className="btn ghost">Envoyer</button>
         </form>
       )}
+      <form className="inline" onSubmit={async (e) => {
+        e.preventDefault();
+        if (!plan) return;
+        await supabase.from("outfits").update({ status: "planifiee", planned_for: plan }).eq("id", o.id);
+        setNote(`Planifiée pour le ${new Date(plan + "T12:00:00").toLocaleDateString("fr-FR")}.`);
+      }}>
+        <input type="date" value={plan} onChange={(e) => setPlan(e.target.value)} aria-label="Date" />
+        <button className="btn ghost">Planifier</button>
+      </form>
       {note && <p className="muted small" role="status">{note}</p>}
     </article>
   );

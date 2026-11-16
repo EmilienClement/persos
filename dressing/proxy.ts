@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 // Next 16 : "proxy" remplace "middleware". Tout est privé sauf /login et /api/health.
-const PUBLIC = ["/login", "/api/health", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png"];
+const PUBLIC = ["/login", "/api/health", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png", "/sw.js", "/offline.html", "/api/keepalive"];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

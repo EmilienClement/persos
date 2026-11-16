@@ -7,6 +7,7 @@ const TABS = [
   { href: "/dressing", label: "Dressing" },
   { href: "/styliste", label: "Styliste" },
   { href: "/import", label: "Import" },
+  { href: "/plus", label: "Plus" },
 ];
 
 export default function Nav() {

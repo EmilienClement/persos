@@ -65,3 +65,12 @@ a { color: var(--accent); }
 .vote.on { border-color:var(--ink); background:#ebe5d8; }
 .manque { margin-top:28px; padding:14px; border:1px dashed var(--accent); } .manque ul { padding-left:18px; margin:8px 0; }
 .btn:disabled { opacity:.55; cursor:default; }
+
+.menu { list-style:none; padding:0; margin:16px 0; }
+.menu a { display:block; padding:14px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+.menu strong { display:block; font-family: Georgia, serif; font-weight:400; font-size:18px; }
+.menu span { color:var(--mute); font-size:13px; }
+.rules { list-style:none; padding:0; margin:4px 0 8px; font-size:14px; }
+.rules li { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid var(--line); }
+.inline select { padding:12px; font-size:16px; border:1px solid var(--line); background:#fbf9f4; border-radius:0; }
+.links { display:flex; gap:14px; flex-wrap:wrap; margin:8px 0; } .links a { font-size:14px; }
