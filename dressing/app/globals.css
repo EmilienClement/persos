@@ -42,3 +42,26 @@ a { color: var(--accent); }
 .rows .name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .rows .note { grid-column:1 / -1; color:var(--accent); font-size:12px; }
 .state.ok { color:#2f6b3a; } .state.erreur { color:var(--accent); }
+
+.weather { margin: 20px 0; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.weather .row { display:flex; justify-content:space-between; align-items:baseline; }
+.weather .big { font-family: Georgia, serif; font-size: 34px; margin: 6px 0 2px; }
+.link { background:none; border:0; color:var(--accent); font-size:13px; cursor:pointer; text-decoration:underline; padding:0; }
+.tiny { font-size: 11px; margin: 10px 0 0; }
+.inline { display:flex; gap:8px; margin-top:10px; } .inline input { flex:1; padding:12px; font-size:16px; border:1px solid var(--line); background:#fbf9f4; border-radius:0; }
+.inline .btn { width:auto; margin:0; padding:12px 14px; }
+
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+.chip { padding:9px 12px; font-size:14px; background:transparent; border:1px solid var(--line); color:var(--ink); cursor:pointer; border-radius:0; }
+.chip.on { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+.outfit { margin-top:28px; padding-top:20px; border-top:1px solid var(--ink); }
+.strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:6px; }
+.strip figure { margin:0; flex:0 0 92px; font-size:11px; color:var(--mute); }
+.strip img, .strip .ph { width:92px; aspect-ratio:4/5; object-fit:cover; background:#ebe5d8; display:block; }
+.strip figcaption { margin-top:4px; line-height:1.2; }
+.actions { display:flex; gap:8px; align-items:center; margin-top:12px; }
+.actions .btn { margin:0; flex:1; }
+.vote { font-size:20px; padding:10px 14px; background:transparent; border:1px solid var(--line); cursor:pointer; border-radius:0; }
+.vote.on { border-color:var(--ink); background:#ebe5d8; }
+.manque { margin-top:28px; padding:14px; border:1px dashed var(--accent); } .manque ul { padding-left:18px; margin:8px 0; }
+.btn:disabled { opacity:.55; cursor:default; }

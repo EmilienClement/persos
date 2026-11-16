@@ -1,4 +1,5 @@
 import Link from "next/link";
+import WeatherCard from "@/components/WeatherCard";
 import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,8 @@ export default async function Home() {
     <>
       <p className="eyebrow">Aujourd’hui</p>
       <h1>Bonjour Émilien.</h1>
-      <p className="muted">{actifs ?? 0} pièces dans le dressing.</p>
+      <p className="muted">{actifs ?? 0} pièce{(actifs ?? 0) > 1 ? "s" : ""} dans le dressing.</p>
+      <WeatherCard />
 
       {(aValider ?? 0) > 0 && (
         <Link href="/valider" className="card-link">
@@ -22,7 +24,7 @@ export default async function Home() {
           <span>Un tap par pièce →</span>
         </Link>
       )}
-      <p className="muted small">La météo et le styliste arrivent ensuite.</p>
+      <Link href="/styliste" className="btn">Que porter aujourd’hui ?</Link>
     </>
   );
 }
