@@ -35,7 +35,7 @@ export default function Login() {
   return (
     <main style={{ minHeight: "100dvh", display: "grid", placeItems: "center", padding: 24 }}>
       <form onSubmit={onSubmit} style={{ width: "100%", maxWidth: 340 }}>
-        <h1 style={{ fontWeight: 400, letterSpacing: 2, margin: 0 }}>Dressing</h1>
+        <h1 style={{ margin: 0 }}>Dressing</h1>
         <input name="email" type="email" autoComplete="username" placeholder="Email" required style={field} />
         <input name="password" type="password" autoComplete="current-password" placeholder="Mot de passe" required style={field} />
         <button
